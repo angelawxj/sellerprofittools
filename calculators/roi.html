@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ROI Calculator - Calculate return on investment.">
+<title>ROI Calculator</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header>
+<h1>ROI Calculator</h1>
+<p>Calculate return on investment for your project</p>
+<span class="theme-toggle" onclick="toggleTheme()">Switch Theme</span>
+</header>
+<main>
+<div class="tool-card">
+<h2>Input Details</h2>
+<label for="roiGain">Gain from Investment ($):</label>
+<input type="number" id="roiGain" placeholder="Enter gain">
+
+<label for="roiCost">Investment Cost ($):</label>
+<input type="number" id="roiCost" placeholder="Enter cost">
+
+<button class="calc-btn" onclick="calculateROI()">Calculate ROI</button>
+<div class="result" id="result"></div>
+</div>
+</main>
+<footer>
+&copy; 2026 Seller Profit Tools | <a href="../index.html">Home</a>
+</footer>
+<script src="../assets/script.js"></script>
+<script>
+function calculateROI(){
+  const gain = parseFloat(document.getElementById('roiGain').value) || 0;
+  const cost = parseFloat(document.getElementById('roiCost').value) || 0;
+  if(cost === 0){document.getElementById('result').textContent="Investment cost must be greater than 0."; return;}
+  const roi = ((gain - cost)/cost)*100;
+  document.getElementById('result').textContent = `ROI: ${roi.toFixed(2)}%`;
+}
+</script>
+</body>
+</html>

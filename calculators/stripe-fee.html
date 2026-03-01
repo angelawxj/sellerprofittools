@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Stripe Fee Calculator - Calculate net income after Stripe processing fees.">
+<title>Stripe Fee Calculator</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header>
+<h1>Stripe Fee Calculator</h1>
+<p>Calculate net income after Stripe processing fees</p>
+<span class="theme-toggle" onclick="toggleTheme()">Switch Theme</span>
+</header>
+<main>
+<div class="tool-card">
+<h2>Input Details</h2>
+<label for="stripeAmount">Payment Amount ($):</label>
+<input type="number" id="stripeAmount" placeholder="Enter amount">
+
+<label for="stripePercent">Percentage Fee (%):</label>
+<input type="number" id="stripePercent" placeholder="Enter % fee" value="2.9">
+
+<label for="stripeFixed">Fixed Fee ($):</label>
+<input type="number" id="stripeFixed" placeholder="Enter fixed fee" value="0.3">
+
+<button class="calc-btn" onclick="calculateStripe()">Calculate Net</button>
+<div class="result" id="result"></div>
+</div>
+</main>
+<footer>
+&copy; 2026 Seller Profit Tools | <a href="../index.html">Home</a>
+</footer>
+<script src="../assets/script.js"></script>
+<script>
+function calculateStripe(){
+  const amount = parseFloat(document.getElementById('stripeAmount').value) || 0;
+  const percent = parseFloat(document.getElementById('stripePercent').value) || 0;
+  const fixed = parseFloat(document.getElementById('stripeFixed').value) || 0;
+  const net = amount - (amount * percent/100 + fixed);
+  document.getElementById('result').textContent = `Net Income: $${net.toFixed(2)}`;
+}
+</script>
+</body>
+</html>

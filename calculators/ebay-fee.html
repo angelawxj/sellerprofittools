@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="eBay Fee Calculator - Calculate net income after eBay fees and shipping.">
+<title>eBay Fee Calculator</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header>
+<h1>eBay Fee Calculator</h1>
+<p>Calculate net income after eBay fees and shipping</p>
+<span class="theme-toggle" onclick="toggleTheme()">Switch Theme</span>
+</header>
+<main>
+<div class="tool-card">
+<h2>Input Details</h2>
+<label for="ebayPrice">Selling Price ($):</label>
+<input type="number" id="ebayPrice" placeholder="Enter selling price">
+
+<label for="ebayCost">Product Cost ($):</label>
+<input type="number" id="ebayCost" placeholder="Enter product cost">
+
+<label for="ebayShipping">Shipping Cost ($):</label>
+<input type="number" id="ebayShipping" placeholder="Enter shipping cost">
+
+<label for="ebayFeePercent">eBay Fee (%):</label>
+<input type="number" id="ebayFeePercent" placeholder="Enter eBay fee %" value="10">
+
+<button class="calc-btn" onclick="calculateEbay()">Calculate Net</button>
+<div class="result" id="result"></div>
+</div>
+</main>
+<footer>
+&copy; 2026 Seller Profit Tools | <a href="../index.html">Home</a>
+</footer>
+<script src="../assets/script.js"></script>
+<script>
+function calculateEbay(){
+  const price = parseFloat(document.getElementById('ebayPrice').value) || 0;
+  const cost = parseFloat(document.getElementById('ebayCost').value) || 0;
+  const ship = parseFloat(document.getElementById('ebayShipping').value) || 0;
+  const feePercent = parseFloat(document.getElementById('ebayFeePercent').value) || 0;
+  const net = price - cost - ship - (price * feePercent/100);
+  document.getElementById('result').textContent = `Net Income: $${net.toFixed(2)}`;
+}
+</script>
+</body>
+</html>

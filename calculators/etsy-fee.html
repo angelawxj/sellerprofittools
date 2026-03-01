@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Etsy Fee Calculator - Calculate net income after Etsy fees.">
+<title>Etsy Fee Calculator</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header>
+<h1>Etsy Fee Calculator</h1>
+<p>Calculate net income after Etsy fees</p>
+<span class="theme-toggle" onclick="toggleTheme()">Switch Theme</span>
+</header>
+<main>
+<div class="tool-card">
+<h2>Input Details</h2>
+<label for="etsyPrice">Selling Price ($):</label>
+<input type="number" id="etsyPrice" placeholder="Enter selling price">
+
+<label for="etsyCost">Product Cost ($):</label>
+<input type="number" id="etsyCost" placeholder="Enter product cost">
+
+<label for="etsyFeePercent">Etsy Fee (%):</label>
+<input type="number" id="etsyFeePercent" placeholder="Enter Etsy fee %" value="5">
+
+<label for="etsyTransaction">Transaction Fee ($):</label>
+<input type="number" id="etsyTransaction" placeholder="Enter fixed fee" value="0.2">
+
+<button class="calc-btn" onclick="calculateEtsy()">Calculate Net</button>
+<div class="result" id="result"></div>
+</div>
+</main>
+<footer>
+&copy; 2026 Seller Profit Tools | <a href="../index.html">Home</a>
+</footer>
+<script src="../assets/script.js"></script>
+<script>
+function calculateEtsy(){
+  const price = parseFloat(document.getElementById('etsyPrice').value) || 0;
+  const cost = parseFloat(document.getElementById('etsyCost').value) || 0;
+  const feePercent = parseFloat(document.getElementById('etsyFeePercent').value) || 0;
+  const feeFixed = parseFloat(document.getElementById('etsyTransaction').value) || 0;
+  const net = price - cost - (price * feePercent/100 + feeFixed);
+  document.getElementById('result').textContent = `Net Income: $${net.toFixed(2)}`;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Break-even Calculator - Calculate sales needed to break even.">
+<title>Break-even Calculator</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header>
+<h1>Break-even Calculator</h1>
+<p>Find your sales quantity needed to break even</p>
+<span class="theme-toggle" onclick="toggleTheme()">Switch Theme</span>
+</header>
+<main>
+<div class="tool-card">
+<h2>Input Details</h2>
+<label for="fixedCost">Fixed Costs ($):</label>
+<input type="number" id="fixedCost" placeholder="Enter fixed costs">
+
+<label for="pricePerUnit">Selling Price per Unit ($):</label>
+<input type="number" id="pricePerUnit" placeholder="Enter price per unit">
+
+<label for="variableCost">Variable Cost per Unit ($):</label>
+<input type="number" id="variableCost" placeholder="Enter variable cost per unit">
+
+<button class="calc-btn" onclick="calculateBreakEven()">Calculate Break-even Quantity</button>
+<div class="result" id="result"></div>
+</div>
+</main>
+<footer>
+&copy; 2026 Seller Profit Tools | <a href="../index.html">Home</a>
+</footer>
+<script src="../assets/script.js"></script>
+<script>
+function calculateBreakEven(){
+  const fixed = parseFloat(document.getElementById('fixedCost').value) || 0;
+  const price = parseFloat(document.getElementById('pricePerUnit').value) || 0;
+  const variable = parseFloat(document.getElementById('variableCost').value) || 0;
+  if(price <= variable){document.getElementById('result').textContent="Selling price must be greater than variable cost.";return;}
+  const qty = fixed / (price - variable);
+  document.getElementById('result').textContent = `Break-even Quantity: ${Math.ceil(qty)}`;
+}
+</script>
+</body>
+</html>

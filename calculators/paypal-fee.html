@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="PayPal Fee Calculator - Calculate net income after PayPal fees.">
+<title>PayPal Fee Calculator</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header>
+<h1>PayPal Fee Calculator</h1>
+<p>Calculate net income after PayPal fees</p>
+<span class="theme-toggle" onclick="toggleTheme()">Switch Theme</span>
+</header>
+<main>
+<div class="tool-card">
+  <h2>Input Details</h2>
+  <label for="paypalAmount">Payment Amount ($):</label>
+  <input type="number" id="paypalAmount" placeholder="Enter amount">
+
+  <label for="paypalType">Fee Type:</label>
+  <select id="paypalType">
+    <option value="standard">Standard (2.9% + $0.30)</option>
+    <option value="micro">Micropayments (5% + $0.05)</option>
+  </select>
+
+  <button class="calc-btn" onclick="calculatePayPal()">Calculate Net</button>
+  <div class="result" id="result"></div>
+</div>
+</main>
+<footer>
+&copy; 2026 Seller Profit Tools | <a href="../index.html">Home</a>
+</footer>
+<script src="../assets/script.js"></script>
+<script>
+function calculatePayPal(){
+  const amount = parseFloat(document.getElementById('paypalAmount').value) || 0;
+  const type = document.getElementById('paypalType').value;
+  let net = 0;
+  if(type==="standard"){ net = amount - (amount*0.029 + 0.3); }
+  else if(type==="micro"){ net = amount - (amount*0.05 + 0.05); }
+  document.getElementById('result').textContent = `Net Income: $${net.toFixed(2)}`;
+}
+</script>
+</body>
+</html>

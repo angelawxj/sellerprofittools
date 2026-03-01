@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Dropshipping Profit Calculator - Compute net profit for dropshipping products.">
+<title>Dropshipping Profit Calculator</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header>
+<h1>Dropshipping Profit Calculator</h1>
+<p>Compute net profit for dropshipping products</p>
+<span class="theme-toggle" onclick="toggleTheme()">Switch Theme</span>
+</header>
+<main>
+<div class="tool-card">
+<h2>Input Details</h2>
+<label for="dsPrice">Selling Price ($):</label>
+<input type="number" id="dsPrice" placeholder="Enter selling price">
+
+<label for="dsCost">Product Cost ($):</label>
+<input type="number" id="dsCost" placeholder="Enter product cost">
+
+<label for="dsShipping">Shipping Cost ($):</label>
+<input type="number" id="dsShipping" placeholder="Enter shipping cost">
+
+<label for="dsAd">Advertising Cost ($):</label>
+<input type="number" id="dsAd" placeholder="Enter ad cost">
+
+<button class="calc-btn" onclick="calculateDropshipping()">Calculate Profit</button>
+<div class="result" id="result"></div>
+</div>
+</main>
+<footer>
+&copy; 2026 Seller Profit Tools | <a href="../index.html">Home</a>
+</footer>
+<script src="../assets/script.js"></script>
+<script>
+function calculateDropshipping(){
+  const price = parseFloat(document.getElementById('dsPrice').value) || 0;
+  const cost = parseFloat(document.getElementById('dsCost').value) || 0;
+  const ship = parseFloat(document.getElementById('dsShipping').value) || 0;
+  const ad = parseFloat(document.getElementById('dsAd').value) || 0;
+  const net = price - cost - ship - ad;
+  document.getElementById('result').textContent = `Net Profit: $${net.toFixed(2)}`;
+}
+</script>
+</body>
+</html>

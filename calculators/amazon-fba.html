@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Amazon FBA Calculator - Estimate net income after FBA fees, shipping, and taxes.">
+<title>Amazon FBA Calculator</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header>
+<h1>Amazon FBA Calculator</h1>
+<p>Estimate net income after FBA fees, shipping, and taxes</p>
+<span class="theme-toggle" onclick="toggleTheme()">Switch Theme</span>
+</header>
+<main>
+<div class="tool-card">
+  <h2>Input Details</h2>
+  <label for="fbaPrice">Selling Price ($):</label>
+  <input type="number" id="fbaPrice" placeholder="Enter selling price">
+
+  <label for="fbaCost">Product Cost ($):</label>
+  <input type="number" id="fbaCost" placeholder="Enter product cost">
+
+  <label for="fbaShip">Shipping Cost ($):</label>
+  <input type="number" id="fbaShip" placeholder="Enter shipping cost">
+
+  <label for="fbaFees">FBA & Platform Fees ($):</label>
+  <input type="number" id="fbaFees" placeholder="Enter FBA + Amazon fees">
+
+  <button class="calc-btn" onclick="calculateFBA()">Calculate Net Income</button>
+  <div class="result" id="result"></div>
+</div>
+</main>
+<footer>
+&copy; 2026 Seller Profit Tools | <a href="../index.html">Home</a>
+</footer>
+<script src="../assets/script.js"></script>
+<script>
+function calculateFBA(){
+  const price = parseFloat(document.getElementById('fbaPrice').value) || 0;
+  const cost = parseFloat(document.getElementById('fbaCost').value) || 0;
+  const ship = parseFloat(document.getElementById('fbaShip').value) || 0;
+  const fees = parseFloat(document.getElementById('fbaFees').value) || 0;
+
+  // Net Income Formula
+  const net = price - cost - ship - fees;
+
+  document.getElementById('result').textContent = `Net Income: $${net.toFixed(2)}`;
+}
+</script>
+</body>
+</html>

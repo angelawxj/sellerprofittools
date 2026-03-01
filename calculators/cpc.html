@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CPC Calculator - Calculate cost per click for advertising campaigns.">
+<title>CPC Calculator</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header>
+<h1>CPC Calculator</h1>
+<p>Calculate cost per click for your ad campaigns</p>
+<span class="theme-toggle" onclick="toggleTheme()">Switch Theme</span>
+</header>
+<main>
+<div class="tool-card">
+<h2>Input Details</h2>
+<label for="cpcCost">Total Ad Cost ($):</label>
+<input type="number" id="cpcCost" placeholder="Enter total cost">
+
+<label for="clicks">Number of Clicks:</label>
+<input type="number" id="clicks" placeholder="Enter clicks">
+
+<button class="calc-btn" onclick="calculateCPC()">Calculate CPC</button>
+<div class="result" id="result"></div>
+</div>
+</main>
+<footer>
+&copy; 2026 Seller Profit Tools | <a href="../index.html">Home</a>
+</footer>
+<script src="../assets/script.js"></script>
+<script>
+function calculateCPC(){
+  const cost = parseFloat(document.getElementById('cpcCost').value) || 0;
+  const clicks = parseFloat(document.getElementById('clicks').value) || 0;
+  if(clicks === 0){document.getElementById('result').textContent="Clicks must be greater than 0.";return;}
+  const cpc = cost / clicks;
+  document.getElementById('result').textContent = `CPC: $${cpc.toFixed(2)}`;
+}
+</script>
+</body>
+</html>

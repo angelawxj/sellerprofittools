@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="VAT Calculator - Calculate tax-included or tax-excluded prices.">
+<title>VAT Calculator</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header>
+<h1>VAT Calculator</h1>
+<p>Calculate tax-included or tax-excluded prices easily</p>
+<span class="theme-toggle" onclick="toggleTheme()">Switch Theme</span>
+</header>
+<main>
+<div class="tool-card">
+<h2>Input Details</h2>
+<label for="vatPrice">Price ($):</label>
+<input type="number" id="vatPrice" placeholder="Enter price">
+
+<label for="vatRate">VAT Rate (%):</label>
+<input type="number" id="vatRate" placeholder="Enter VAT rate" value="20">
+
+<label for="vatMode">Mode:</label>
+<select id="vatMode">
+<option value="add">Add VAT</option>
+<option value="remove">Remove VAT</option>
+</select>
+
+<button class="calc-btn" onclick="calculateVAT()">Calculate</button>
+<div class="result" id="result"></div>
+</div>
+</main>
+<footer>
+&copy; 2026 Seller Profit Tools | <a href="../index.html">Home</a>
+</footer>
+<script src="../assets/script.js"></script>
+<script>
+function calculateVAT(){
+  const price = parseFloat(document.getElementById('vatPrice').value) || 0;
+  const rate = parseFloat(document.getElementById('vatRate').value) || 0;
+  const mode = document.getElementById('vatMode').value;
+  let result = 0;
+  if(mode === 'add'){ result = price * (1 + rate/100); }
+  else { result = price / (1 + rate/100); }
+  document.getElementById('result').textContent = `Result: $${result.toFixed(2)}`;
+}
+</script>
+</body>
+</html>
