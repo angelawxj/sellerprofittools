@@ -6,6 +6,8 @@
 <meta name="description" content="Amazon FBA Calculator - Estimate net income after FBA fees, shipping, and taxes.">
 <title>Amazon FBA Calculator</title>
 <link rel="stylesheet" href="../assets/style.css">
+
+<!-- Google Ads (保留你原来的) -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9625726268537588"
      crossorigin="anonymous"></script>
 </head>
@@ -15,6 +17,7 @@
 <p>Estimate net income after FBA fees, shipping, and taxes</p>
 <span class="theme-toggle" onclick="toggleTheme()">Switch Theme</span>
 </header>
+
 <main>
 <div class="tool-card">
   <h2>Input Details</h2>
@@ -31,12 +34,47 @@
   <input type="number" id="fbaFees" placeholder="Enter FBA + Amazon fees">
 
   <button class="calc-btn" onclick="calculateFBA()">Calculate Net Income</button>
+
   <div class="result" id="result"></div>
+
+<!-- 亚马逊联盟按钮 -->
+<div class="affiliate-link" id="affiliateLink" style="display:none; margin-top:10px;">
+  <p>Check this product on Amazon:</p>
+  <a href="https://www.amazon.com/dp/B0DR86V4ZV?tag=sellerprofitt-20" 
+   target="_blank" 
+   class="btn" 
+   style="background:#FF9900; color:#fff; padding:8px 12px; text-decoration:none; border-radius:4px;">
+   View on Amazon
+</a>
+<p style="font-size:12px; color:#555; margin-top:5px;">
+  This is an affiliate link. We may earn a commission if you make a purchase.
+</p>
+</div>
+
+  <!-- 可选：Native Shopping Ads -->
+  
+  <div id="amzn-native-ad" style="margin-top:20px;">
+    <script type="text/javascript">
+      amzn_assoc_placement = "adunit0";
+      amzn_assoc_tracking_id = "sellerprofitt-20";
+      amzn_assoc_ad_mode = "search";
+      amzn_assoc_ad_type = "smart";
+      amzn_assoc_marketplace = "amazon";
+      amzn_assoc_region = "US";
+      amzn_assoc_default_search_phrase = "FBA product";
+      amzn_assoc_default_category = "All";
+      amzn_assoc_linkid = "随机生成的linkid";
+    </script>
+    <script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US"></script>
+  </div>
+ 
 </div>
 </main>
+
 <footer>
 &copy; 2026 Seller Profit Tools | <a href="../index.html">Home</a>
 </footer>
+
 <script src="../assets/script.js"></script>
 <script>
 function calculateFBA(){
@@ -47,8 +85,10 @@ function calculateFBA(){
 
   // Net Income Formula
   const net = price - cost - ship - fees;
-
   document.getElementById('result').textContent = `Net Income: $${net.toFixed(2)}`;
+
+  // 显示联盟按钮
+  document.getElementById('affiliateLink').style.display = 'block';
 }
 </script>
 </body>
